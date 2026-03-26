@@ -1,0 +1,345 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* ========================================= */
+/* 1. GLOBAL RESET & BASICS                  */
+/* ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #202124;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+}
+
+/* ========================================= */
+/* 2. SHARED LAYOUTS (Landing & Home)        */
+/* ========================================= */
+/* Applies to both Landing Page and Home Page wrappers */
+.landingPageContainer,
+.pageContainer {
+    width: 100vw;
+    min-height: 100vh;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%), url("/public/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========================================= */
+/* 3. NAVIGATION BAR (Shared)                */
+/* ========================================= */
+.landingPageContainer nav,
+.navBar {
+    padding: 1.6rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.landingPageContainer nav h2,
+.navBar h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #D97500, #ff9500);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.landingPageContainer nav h2:hover,
+.navBar h2:hover {
+    letter-spacing: 2px;
+    transform: scale(1.05);
+}
+
+.landingPageContainer nav .navlist,
+.navBar div { /* Selects div inside navBar for Home page icons */
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    list-style: none;
+}
+
+.landingPageContainer nav .navlist p, 
+.navBar p,
+.landingPageContainer nav .navlist div {
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: opacity 0.3s ease, color 0.3s ease;
+    color: white;
+}
+
+.landingPageContainer nav .navlist p:hover,
+.navBar p:hover {
+    opacity: 0.8;
+    color: #ff9500;
+}
+
+.landingPageContainer nav .navlist div[role='button'] {
+    background: linear-gradient(135deg, #D97500, #ff9500);
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    color: white;
+    transition: transform 0.2s ease;
+}
+
+.landingPageContainer nav .navlist div[role='button']:hover {
+    transform: scale(1.05);
+}
+
+/* ========================================= */
+/* 4. MAIN CONTENT AREAS                     */
+/* ========================================= */
+
+/* Shared Container for Content */
+.landingMainContainer,
+.meetContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 4rem;
+    min-height: 85vh;
+    width: 100%;
+    max-width: 1400px; /* Prevents stretching on huge screens */
+    margin: 0 auto;
+}
+
+/* --- Left Panel (Text & Inputs) --- */
+.landingMainContainer > div:nth-child(1),
+.leftPanel {
+    flex: 1;
+    font-size: 2.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 600px; 
+}
+
+.landingMainContainer h1,
+.leftPanel h2 {
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.landingMainContainer p {
+    font-size: 1.2rem;
+    color: #d1d1d1;
+    margin-top: 0;
+}
+
+/* Get Started Button (Landing) */
+.landingMainContainer > div:nth-child(1) div[role='button'] {
+    background: linear-gradient(135deg, #D97500, #ff9500);
+    width: fit-content;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    margin-top: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.landingMainContainer > div:nth-child(1) div[role='button']:hover {
+    transform: translateY(-3px) scale(1.02);
+}
+
+.landingMainContainer > div:nth-child(1) div[role='button'] a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+/* --- Right Panel (Image) --- */
+.landingMainContainer > div:nth-child(2),
+.rightPanel {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.landingMainContainer > div:nth-child(2) img,
+.rightPanel img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+/* ========================================= */
+/* 5. HOME PAGE SPECIFIC STYLES              */
+/* ========================================= */
+.inputSection {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* --- FIX: Input Field Styling (White Box / Black Text) --- */
+
+/* 1. The Input Box Background & Text Color */
+.inputSection .MuiInputBase-root {
+    background-color: #202124 !important; /* Force White Background */
+    color: #ffffff !important;            /* Force White Text */
+    border-radius: 5px;
+}
+
+/* 2. The Label Color */
+/* Default state (inside the box): Dark Grey */
+.inputSection .MuiInputLabel-root {
+    color: #555555 !important;
+}
+/* Focused state (floating above): White (so it's visible against dark page) */
+.inputSection .MuiInputLabel-root.Mui-focused,
+.inputSection .MuiInputLabel-shrink {
+    color: #5860ff !important;
+    font-weight: 500;
+}
+
+/* 3.  default border (cleaner look) */
+.inputSection .MuiOutlinedInput-notchedOutline {
+    border: 2px solid white !important;
+}
+
+/* 4. Join Button Styling */
+.inputSection button {
+    background-color: #1976d2 !important; /* Blue Button */
+    color: white !important;
+    font-weight: bold;
+    box-shadow: none !important;
+    height: 56px; /* Matches height of the input box */
+}
+
+/* Icons in Navbar */
+.MuiIconButton-root {
+    color: white !important;
+}
+
+/* ========================================= */
+/* 6. AUTH PAGE FIXES (White Pill Label)     */
+/* ========================================= */
+
+/* 1. Input Box (Solid White) */
+.authInput .MuiInputBase-root {
+    background-color: #ffffff !important; 
+    border-radius: 4px;
+}
+.authInput .MuiInputBase-input {
+    color: #000000 !important; /* Text is Black */
+}
+
+/* 2. Label - Default State */
+.authInput .MuiInputLabel-root {
+    color: #555555 !important;
+}
+
+/* 3. Label - FLOATING (The Fix) */
+.authInput .MuiInputLabel-root.Mui-focused,
+.authInput .MuiInputLabel-root.MuiInputLabel-shrink {
+    color: #000000 !important; /* Blue Text */
+    font-weight: 700 !important; /* Bold */
+    
+    /* --- KEY FIX: Add a white background behind the text --- */
+    background-color: #fff5f5 !important; 
+    padding: 0 8px !important; /* Add breathing room around text */
+    margin-left: -4px; /* Center it slightly to cover the border */
+    border-radius: 4px; /* Soft edges */
+}
+
+/* 4. Borders */
+.authInput .MuiOutlinedInput-notchedOutline {
+    border-color: rgba(0,0,0,0.1) !important;
+}
+.authInput .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: #1976d2 !important;
+}
+
+/* 5. Button */
+.authButton {
+    background-color: #1976d2 !important;
+    color: white !important;
+    font-weight: bold !important;
+    box-shadow: 0 4px 14px 0 rgba(25, 118, 210, 0.39) !important;
+}
+
+/* ========================================= */
+/* 7. RESPONSIVE DESIGN                      */
+/* ========================================= */
+@media (max-width: 900px) {
+    .landingMainContainer,
+    .meetContainer {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding-inline: 2rem;
+        padding-top: 2rem;
+    }
+    
+    .landingMainContainer > div:nth-child(1),
+    .leftPanel {
+        align-items: center;
+        font-size: 1.8rem;
+        margin-top: 2rem;
+    }
+
+    .landingMainContainer > div:nth-child(2),
+    .rightPanel {
+        justify-content: center;
+    }
+
+    .landingMainContainer > div:nth-child(2) img,
+    .rightPanel img {
+        max-width: 80%;
+    }
+
+    /* Stack inputs on mobile */
+    .inputSection {
+        flex-direction: column;
+        width: 100%;
+    }
+    .inputSection .MuiFormControl-root,
+    .inputSection button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .landingPageContainer nav,
+    .navBar {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+        height: auto;
+    }
+    .landingPageContainer nav .navlist,
+    .navBar div {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
